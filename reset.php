@@ -1,0 +1,9 @@
+<?php
+include("includes/header.php");
+?>
+<?php
+unset($_SESSION['counter']);
+?>
+<?php
+include("includes/footer.php");
+?>

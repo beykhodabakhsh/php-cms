@@ -1,0 +1,234 @@
+@import url('fonts/fontiran.css');
+
+body {
+    font-weight: 300;
+    direction: rtl;
+    text-align: right;
+    background-color: #fafafa;
+}
+
+.color-red {
+    color: red;
+}
+
+body, input, select, select option, textarea, .popover {
+    font-family: iranyekan, 'Droid Sans', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+}
+
+tr th {
+    text-align: center;
+}
+
+a {
+    color: #555555;
+}
+
+a:hover {
+    color: #555555;
+    text-decoration: none;
+}
+
+.no-input {
+    background-color: transparent !important;
+    border: 0;
+    padding-right: 0;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.register-section .register-box {
+    background-color: white;
+    max-width: 550px;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .2);
+    transition: all .3s;
+}
+
+.register-section .register-box:hover {
+    box-shadow: rgba(45, 45, 45, 0.05) 0px 2px 2px, rgba(49, 49, 49, 0.05) 0px 4px 4px, rgba(42, 42, 42, 0.05) 0px 8px 8px, rgba(32, 32, 32, 0.05) 0px 16px 16px, rgba(49, 49, 49, 0.05) 0px 32px 32px, rgba(35, 35, 35, 0.05) 0px 64px 64px;;
+}
+
+.register-section .register-box .submit-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.rememberme-section {
+    display: flex;
+    justify-content: right;
+}
+
+.rememberme-section input {
+    margin-top: 8px;
+}
+
+.rememberme-section label {
+    margin-right: 20px;
+}
+
+.header-section-g {
+    margin-top: 15px;
+    margin-bottom: 7vh;
+}
+
+.header-section-g nav, .header-section-g nav a.logo-section {
+    padding: 0;
+    margin: 0;
+}
+
+.header-section-g ul.navbar-nav {
+    margin-left: auto;
+    margin-right: 0 !important;
+}
+
+.header-section-g ul.navbar-nav .nav-link {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a.logo-section img {
+    max-height: 50px;
+    width: auto;
+}
+
+.products-section article {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 3px;
+    transition: all .3s;
+}
+
+.products-section article:hover button {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.products-section article img {
+    border-radius: 3px;
+}
+
+.products-section .product-box img.product-image {
+    width: 100%;
+    height: auto;
+}
+
+.products-section .owl-dots {
+    margin-top: 5vh;
+}
+
+.products-section .product-box h3 {
+    padding-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.products-section .product-box p.product-description {
+    padding-top: 5px;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: justify;
+    margin-bottom: 5px;
+    color: #8e8e8e;
+}
+
+.products-section .product-box p.product-quantity {
+    font-size: 13px;
+    font-weight: 300;
+    text-align: right;
+    margin-bottom: 5px;
+    color: #8e8e8e;
+}
+
+.products-section .product-box p.product-price {
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.products-section .product-box button {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.prodcut-manage-section .prodcut-manage-box {
+    width: 100%;
+}
+
+.main-section-g .title-products {
+    margin-bottom: 4vh;
+}
+
+.main-section-g .title-products h2 {
+    font-weight: 700;
+    text-align: center;
+}
+
+.custom-file label.custom-file-label {
+    padding: .375rem 5.75rem;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #28a745;
+    outline: 0;
+    box-shadow: none;
+}
+
+div {
+    line-height: 2;
+}
+
+.product-page-box .product-image-page {
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .2);
+    transition: all .3s;
+}
+
+.product-page-box .product-image-page:hover {
+    box-shadow: rgba(45, 45, 45, 0.05) 0px 2px 2px, rgba(49, 49, 49, 0.05) 0px 4px 4px, rgba(42, 42, 42, 0.05) 0px 8px 8px, rgba(32, 32, 32, 0.05) 0px 16px 16px, rgba(49, 49, 49, 0.05) 0px 32px 32px, rgba(35, 35, 35, 0.05) 0px 64px 64px;;
+}
+
+.product-page-box .product-description {
+    margin-top: 25px;
+}
+
+.product-page-box p {
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.product-page-box .btn-success {
+    padding: 5px 60px;
+    border-radius: 3px;
+}
+
+.product-order-box .product-image-order {
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .2);
+    transition: all .3s;
+    max-width: 300px;
+    max-height: auto;
+}
+.prodcut-import-box , .prodcut-manage-box {
+    border: 1px solid #cecece;
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+}
+.product-order-box .product-image-order:hover {
+    box-shadow: rgba(45, 45, 45, 0.05) 0px 2px 2px, rgba(49, 49, 49, 0.05) 0px 4px 4px, rgba(42, 42, 42, 0.05) 0px 8px 8px, rgba(32, 32, 32, 0.05) 0px 16px 16px, rgba(49, 49, 49, 0.05) 0px 32px 32px, rgba(35, 35, 35, 0.05) 0px 64px 64px;;
+}
