@@ -11,11 +11,11 @@ $result = mysqli_query($link, $query);
 
 ?>
 <section class="main-section-g">
-    <article class="row product-page-box mt-5">
+    <article class="row product-page-box mt-5 mb-5">
         <?php
         if ($row = mysqli_fetch_array($result)) {
             ?>
-            <div class="col-lg-5">
+            <div class="col-lg-5 mb-3">
                 <img class="product-image product-image-page"
                      src="<?php echo "images/products/" . $row['pro_image']; ?>" alt="">
             </div>

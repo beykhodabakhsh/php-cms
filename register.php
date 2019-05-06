@@ -13,7 +13,7 @@ if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
 } else {
     ?>
 
-    <di class="register-section mt-5 d-flex justify-content-center">
+    <di class="register-section mt-5 d-flex justify-content-center mb-lg-5">
         <div class="register-box ">
             <h2 class="text-center mb-5 font-weight-bold">صفحه ثبت نام</h2>
             <form action="action_register.php" method="post">

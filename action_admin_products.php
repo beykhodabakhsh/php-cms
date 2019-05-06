@@ -1,5 +1,6 @@
 <?php
 include("includes/header.php");
+require("includes/db_connect.php");
 
 if (isset($_POST['pro_code']) && !empty($_POST['pro_code']) &&
     isset($_POST['pro_name']) && !empty($_POST['pro_name']) &&
@@ -21,6 +22,29 @@ if (isset($_POST['pro_code']) && !empty($_POST['pro_code']) &&
     echo $pro_detail = $_POST['pro_detail'];
     exit("تمامی فیلد ها باید پر شوند!");
 }
+if (isset($_GET['action'])) {
+    $id = $_GET['id'];
+    switch ($_GET['action']) {
+        case 'EDIT':
+            $query = "UPDATE products SET pro_code='$pro_code',pro_name='$pro_name',pro_qty='$pro_qty',pro_price='$pro_price',pro_detail='$pro_detail' WHERE pro_code='$id'";
+            if (mysqli_query($link, $query) === true) {
+                echo "محصول انتخاب شده با موفقیت ویرایش شد";
+            } else {
+                echo "خطا در ویرایش محصول";
+            }
+            break;
+        case 'DELETE':
+            $query = "DELETE products SET pro_code='$pro_code',pro_name='$pro_name',pro_qty='$pro_qty',pro_price='$pro_price',pro_detail='$pro_detail' WHERE pro_code='$id'";
+            if (mysqli_query($link, $query) === true) {
+                echo "محصول انتخاب شده با موفقیت حذف شد";
+            } else {
+                echo "خطا در حذف محصول";
+            }
+            break;
+    }
+    mysqli_close($link);
+    exit();
+}
 
 $target_dir = "images/products/";
 $target_file = $target_dir . basename($_FILES["pro_image"]["name"]);
@@ -29,14 +53,14 @@ $imagefiletype = pathinfo($target_file, PATHINFO_EXTENSION);
 $check = getimagesize($_FILES['pro_image']["tmp_name"]);
 
 if ($imagefiletype != "jpg" && $imagefiletype != "png" && $imagefiletype != "jpeg") {
-    echo "لطفا یک فایل تصویری را اپلود کنید";
+    if (file_exists($target_file)) {
+        $isupload = 0;
+        die("فایلی با همین نام در سرویس دنده وجود دارد، لطفا نام فایل خود را تغییر دهید.");
+    }
+    die ("لطفا یک فایل تصویری را اپلود کنید");
     $isupload = 0;
 }
-if (file_exists($target_file)) {
-    $isupload = 0;
-    die("فایلی با همین نام در سرویس دنده وجود دارد، لطفا نام فایل خود را تغییر دهید.");
 
-}
 if ($_FILES["pro_image"]["size"] > 500000) {
     $isupload = 0;
     die("سایز فایل انتخابی، بیش تر از 500 کیلوبایت است، لطفا سایز فایل خود را کاهش دهید.");
@@ -59,8 +83,10 @@ if ($isupload == 0) {
         die ("خطا در هنگام آپلود فایل در سرویس دهنده.");
     }
 }
+
+
 if ($isupload == 1) {
-    require("includes/db_connect.php");
+
     $query = "INSERT INTO products(pro_code,pro_name,pro_qty,pro_price,pro_image,pro_detail) VALUES('$pro_code','$pro_name','$pro_qty','$pro_price','$pro_image','$pro_detail')";
     if (mysqli_query($link, $query) === true) {
         echo "<div class='mt-4 alert alert-success' role='alert'>محصول با موفقیت به انبار اضافه شد";

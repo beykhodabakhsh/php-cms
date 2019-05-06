@@ -14,7 +14,7 @@ if (isset($_SESSION["state_login"]) === true) {
 } else {
     ?>
 
-    <div class="register-section mt-5 d-flex justify-content-center">
+    <div class="register-section mt-5 d-flex justify-content-center mb-5">
         <div class="register-box ">
             <h2 class="text-center mb-5 font-weight-bold">صفحه ورود</h2>
             <form action="action_login.php" method="post">

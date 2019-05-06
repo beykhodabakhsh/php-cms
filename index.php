@@ -17,13 +17,13 @@ $row = mysqli_fetch_array($result);
         while ($row = mysqli_fetch_array($result)) {
             $counter++;
             ?>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 pr-1 pl-1 mb-2">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 pr-1 pl-1 mb-3">
                 <a href="product_page.php?id=<?php echo($row['pro_code']); ?>">
                     <article class="product-box"
                     ">
                     <img class="product-image" src="<?php echo "images/products/" . $row['pro_image']; ?>" alt="">
                     <h3><?php echo($row['pro_name']); ?></h3>
-                    <p class="product-description"><?php echo (substr($row['pro_detail'], 0, 130)) . "..."; ?></p>
+                    <p class="product-description"><?php echo (substr($row['pro_detail'], 0, 121)) . "..."; ?></p>
                     <p class="product-quantity">موجودی: <?php echo($row['pro_qty']); ?></p>
                     <p class="product-price"><?php echo($row['pro_price']); ?> تومان</p>
                     <button type="button" class="btn btn-secondary btn-lg btn-block">خرید</button>
