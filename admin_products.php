@@ -14,20 +14,39 @@ if ((isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) && $_
                     <?php
                     $url = $pro_code = $pro_name = $pro_qty = $pro_price = $pro_image = $pro_detail = "";
                     $btn_caption = "افزودن کالا";
-                    if (isset($_GET['action']) && $_GET['action'] == 'EDIT') {
+                    if (isset($_GET['action'])) {
                         $id = $_GET['id'];
                         $query = "SELECT * FROM products WHERE pro_code='$id'";
                         $result = mysqli_query($link, $query);
-                        if ($row = mysqli_fetch_array($result)) {
-                            $pro_code = $row['pro_code'];
-                            $pro_name = $row['pro_name'];
-                            $pro_price = $row['pro_price'];
-                            $pro_qty = $row['pro_qty'];
-                            $pro_image = $row['pro_image'];
-                            $pro_detail = $row['pro_detail'];
-                            $url = "?id=$pro_code&action=EDIT";
-                            $btn_caption = "ویرایش کالا";
+                        if ($_GET['action'] == 'EDIT') {
+                            if ($row = mysqli_fetch_array($result)) {
+                                $pro_code = $row['pro_code'];
+                                $pro_name = $row['pro_name'];
+                                $pro_price = $row['pro_price'];
+                                $pro_qty = $row['pro_qty'];
+                                $pro_image = $row['pro_image'];
+                                $pro_detail = $row['pro_detail'];
+                                $url = "?id=$pro_code&action=EDIT";
+                                $btn_caption = "ویرایش کالا";
+                            }
                         }
+                        if ($_GET['action'] == 'DELETE') {
+                            if ($row = mysqli_fetch_array($result)) {
+                                $pro_code = $row['pro_code'];
+                                $pro_name = $row['pro_name'];
+                                $pro_price = $row['pro_price'];
+                                $pro_qty = $row['pro_qty'];
+                                $pro_image = $row['pro_image'];
+                                $pro_detail = $row['pro_detail'];
+                                $url = "?id=$pro_code&action=DELETE";
+                                $btn_caption = "حذف کالا";
+                            }
+                        }
+                    }
+                    if (isset($_GET['action']) && $_GET['action'] == 'DELETE') {
+                        $id = $_GET['id'];
+                        $url = "?id=$pro_code&action=DELETE";
+                        $btn_caption = "حذف کالا";
                     }
                     ?>
                     <form name="add_product" action="action_admin_products.php<?php if (!empty($url)) echo($url); ?>"
@@ -73,7 +92,15 @@ if ((isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) && $_
                             </div>
                         </div>
                         <div class="submit-btn">
-                            <button type="submit" class="btn btn-primary"><?php echo($btn_caption); ?></button>
+                            <?php
+                            if($btn_caption == "حذف کالا") {
+                                echo "<button onclick='ckeck_input();' type='submit' class='btn btn-danger'>".$btn_caption."</button>";
+                            } else if ($btn_caption == "ویرایش کالا") {
+                                echo "<button type='submit' class='btn btn-primary'>".$btn_caption."</button>";
+                            } else {
+                                echo "<button type='submit' class='btn btn-primary'>".$btn_caption."</button>";
+                            }
+                            ?>
                             <button type="reset" class="btn btn-dark">ریست</button>
                         </div>
                     </form>
@@ -118,7 +145,7 @@ if ((isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) && $_
                                                 href="admin_products.php?id=<?php echo($row['pro_code']); ?>&action=EDIT">ویرایش</a>
                                     </div>
                                     <div><a class="color-red"
-                                            href="action_admin_products.php?id=<?php echo($row['pro_code']); ?>&action=DELETE">حذف</a>
+                                            href="admin_products.php?id=<?php echo($row['pro_code']); ?>&action=DELETE">حذف</a>
                                     </div>
                                 </td>
                             </tr>
@@ -133,7 +160,17 @@ if ((isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) && $_
         </div>
     </div>
 
-
+    <script>
+        function ckeck_input() {
+            var q = confirm("برای حذف محصول اطمینان دارید؟");
+            if (q == true) {
+                var validator = true;
+                if (validator) {
+                    document.order.submit();
+                }
+            }
+        }
+    </script>
     <?php
 } else {
     echo "شما دسترسی لازم برای مشاهده این صفحه را ندارید!" . "<br/><br/>" .
@@ -141,5 +178,6 @@ if ((isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) && $_
 <button class='btn btn-info my-2 my-sm-0 ml-2' type='submit'>صفحه نخست</button>
 </a>";
 }
+
 include("includes/footer.php");
 ?>

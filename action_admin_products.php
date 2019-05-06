@@ -34,7 +34,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'DELETE':
-            $query = "DELETE products SET pro_code='$pro_code',pro_name='$pro_name',pro_qty='$pro_qty',pro_price='$pro_price',pro_detail='$pro_detail' WHERE pro_code='$id'";
+            $query = "DELETE FROM products WHERE pro_code = '$id'";
             if (mysqli_query($link, $query) === true) {
                 echo "محصول انتخاب شده با موفقیت حذف شد";
             } else {

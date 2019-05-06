@@ -17,13 +17,14 @@ include("includes/header.php");
         $address = $_POST['address'];
 
         $username = $_SESSION['username'];
-
+        $random = rand(0,10000000);
         include("includes/db_connect.php");
-        $query = "INSERT INTO orders(id,username,orderdate,pro_code,pro_qty,pro_price,mobile,address,trackcode,state) VALUES('0','$username','" . date('y-m-d') . "','$pro_code','$pro_qty','$pro_price','$mobile','$address','000000000000000000000000','0')";
+        $query = "INSERT INTO orders(id,username,orderdate,pro_code,pro_qty,pro_price,mobile,address,trackcode,state) VALUES('0','$username','" . date('y-m-d') . "','$pro_code','$pro_qty','$pro_price','$mobile','$address','$random','0')";
         if (mysqli_query($link, $query) === true) {
             echo "<div class='mt-2 alert alert-success'>متشکریم، سفارش شما با موفقیت ثبت شد! <br/>
             کاربر گرامی آقا/خانم $realname 
             شما محصول $pro_name به تعداد $pro_qty با کد $pro_code با قیمت پایه $pro_price و هزینه کلی $total_price تومان را سفارش داده اید. 
+            کد پیگیری: $random
             </div>
               <div class='mt-2 alert alert-info'>پس از بررسی های لازم، با شما تماس گرفته خواهد شد!</div>
               ";
